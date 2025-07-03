@@ -38,3 +38,23 @@ Because i'm lazy:
 * Have shellcheck... check the script
 * Check if some best practices hasn't been forgoten
 * Maybe check if there's a way to not do echo pipe gpg with gpgme
+
+## What to do next
+
+### Use your GPG key for SSH auth
+Simply put `export SSH_AUTH_SOCK=$(gpgconf –list-dirs agent-ssh-socket)` in your bashrc/zshrc/etc
+This need `enable-ssh-support` in `~/.gnupg/gpg-agent.conf` (you can do `gpgconf –kill gpg-agent && eval $(gpg-agent –daemon)` to reload the config
+
+### Sign your git commits
+You can configure git to automatically sign your commits
+```
+git config –global user.signingkey (key ID)
+git config –global commit.gpgsign true
+```
+
+### Use GPG as your password store
+See https://www.passwordstore.org/, firefox ext @ https://codeberg.org/PassFF/passff chrome ext @ https://github.com/browserpass/,
+menu @ https://github.com/carnager/rofi-pass, and TOTP support @ https://github.com/tadfisher/pass-otp/
+
+### Sign/Decrypt emails
+See https://www.enigmail.net
